@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Os Segredos das Casas de Apostas</title>
+<style>
+:root{--bg:#0b1020;--panel:#141c31;--panel2:#1b2741;--text:#eef3ff;--muted:#9eabc7;--line:#2b3958;--accent:#65e0b5;--blue:#83a8ff;--warn:#ffd27a}
+*{box-sizing:border-box}body{margin:0;background:#050505;color:var(--text);font:15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:auto;padding:24px 16px 60px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}
+.brand{font-size:22px;font-weight:800;letter-spacing:.2px}.brand span{color:var(--accent)}.tag{color:var(--muted);font-size:12px;border:1px solid var(--line);padding:7px 10px;border-radius:20px}
+h1{font-size:clamp(26px,5vw,40px);margin:10px 0 8px}.sub{color:var(--muted);max-width:700px;line-height:1.5;margin:0 0 24px}
+.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}.card{background:rgba(20,28,49,.96);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 12px 30px #0002}
+h2{font-size:18px;margin:0 0 16px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{margin-bottom:13px}label{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}
+input,select{width:100%;background:#0e172a;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;outline:none}input:focus,select:focus{border-color:var(--blue)}
+.outcomes{display:grid;grid-template-columns:1fr 1fr;gap:10px}.outcome{background:#101a2d;border:1px solid var(--line);border-radius:12px;padding:12px}.outcome strong{display:block;margin-bottom:8px}
+button{border:0;border-radius:11px;padding:12px 16px;font-weight:750;cursor:pointer;background:var(--accent);color:#071a16}
+.result{margin-top:16px;padding:16px;border-radius:14px;background:#0e172a;border:1px solid var(--line)}
+.big{font-size:32px;font-weight:850;color:var(--accent)}.muted{color:var(--muted)}.status{font-weight:750;margin-bottom:6px}.good{color:var(--accent)}.bad{color:#ff9b9b}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}.stat{background:#1a2540;padding:12px;border-radius:11px}.stat small{display:block;color:var(--muted);font-size:11px}.stat b{display:block;font-size:17px;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}th,td{text-align:left;padding:10px 7px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}
+.note{margin-top:16px;color:var(--muted);font-size:12px;line-height:1.5}.pill{display:inline-block;padding:5px 8px;border-radius:20px;background:#263653;color:#cbd8f3;font-size:11px}
+.housegrid{display:flex;flex-wrap:wrap;gap:8px}.house{background:#101a2d;border:1px solid var(--line);border-radius:20px;padding:8px 11px;color:#dce6ff;font-size:12px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}.stats{grid-template-columns:1fr 1fr}.row{grid-template-columns:1fr}}
+
+/* Segredos IA — chat flutuante */
+#segredosChatLauncher{position:fixed;right:20px;bottom:20px;z-index:9998;border:0;border-radius:999px;padding:15px 19px;background:#65e0b5;color:#06130f;font-weight:800;box-shadow:0 8px 30px #0009;display:flex;align-items:center;gap:9px}
+#segredosChatPanel{position:fixed;right:20px;bottom:84px;z-index:9999;width:min(390px,calc(100vw - 28px));height:min(560px,calc(100dvh - 120px));background:#090909;border:1px solid #2b3958;border-radius:18px;box-shadow:0 18px 60px #000b;display:none;overflow:hidden;flex-direction:column;color:#eef3ff}
+#segredosChatPanel.open{display:flex}
+#segredosChatHeader{padding:15px 16px;background:#111;border-bottom:1px solid #2b3958;display:flex;align-items:center;justify-content:space-between}
+#segredosChatHeader strong{display:block;font-size:15px}
+#segredosChatHeader small{color:#9eabc7;font-size:11px}
+#segredosChatClose{background:transparent;color:#eef3ff;padding:4px 8px;font-size:22px}
+#segredosChatMessages{padding:14px;overflow:auto;flex:1;display:flex;flex-direction:column;gap:10px}
+.sg-msg{max-width:88%;padding:10px 12px;border-radius:13px;line-height:1.45;font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere}
+.sg-msg.bot{align-self:flex-start;background:#171717;border:1px solid #303030}
+.sg-msg.user{align-self:flex-end;background:#164d3c;color:#eafff7}
+#segredosChatQuick{display:flex;gap:7px;overflow-x:auto;padding:0 12px 10px}
+#segredosChatQuick button{white-space:nowrap;padding:8px 10px;font-size:11px;background:#171717;color:#d9e7e1;border:1px solid #34483f}
+#segredosChatForm{display:flex;gap:8px;padding:12px;border-top:1px solid #2b3958;background:#101010}
+#segredosChatInput{min-width:0;flex:1;background:#171717;color:#fff;border:1px solid #343434;border-radius:10px;padding:11px;font:13px system-ui}
+#segredosChatSend{padding:10px 14px}
+#segredosChatFoot{padding:0 12px 10px;color:#858585;font-size:10px;background:#101010}
+@media(max-width:480px){#segredosChatLauncher{right:14px;bottom:14px}#segredosChatPanel{right:8px;bottom:76px;width:calc(100vw - 16px);height:min(570px,calc(100dvh - 96px))}}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div class="brand">◈ OS SEGREDOS <span>DAS CASAS DE APOSTAS</span></div><div class="tag">PAINEL DE ANÁLISE · SCANNER MANUAL</div></div>
+  <h1>Encontre e calcule oportunidades.</h1>
+  <p class="sub">Compare odds do mesmo mercado, confira se existe arbitragem e veja como dividir sua banca. Insira cotações verificadas nas casas — este protótipo não recebe odds ao vivo.</p>
+  <div class="grid">
+    <section class="card">
+      <h2>Calculadora de surebet</h2>
+      <div class="row">
+        <div class="field"><label for="sport">Esporte</label><select id="sport"><option>Futebol</option><option>Vôlei</option><option>Basquete</option><option>Tênis</option><option>Hóquei</option><option>eSports</option><option>Outro</option></select></div>
+        <div class="field"><label for="market">Mercado</label><input id="market" value="Vencedor / 2 resultados" /></div>
+      </div>
+      <div class="field"><label for="event">Jogo / evento</label><input id="event" placeholder="Ex.: Time A x Time B" /></div>
+      <div class="field"><label for="bank">Banca total (R$)</label><input id="bank" type="number" min="1" step="0.01" value="100" /></div>
+      <div class="outcomes">
+        <div class="outcome"><strong>Resultado 1</strong><div class="field"><label>Casa</label><select id="house1"></select></div><div class="field"><label>Odd decimal</label><input id="odd1" type="number" min="1.01" step="0.01" placeholder="Ex.: 2.10"></div></div>
+        <div class="outcome"><strong>Resultado 2</strong><div class="field"><label>Casa</label><select id="house2"></select></div><div class="field"><label>Odd decimal</label><input id="odd2" type="number" min="1.01" step="0.01" placeholder="Ex.: 2.05"></div></div>
+      </div>
+      <div style="margin-top:14px"><button id="calc">Calcular arbitragem</button></div>
+      <div class="result" id="result" aria-live="polite"><div class="muted">Digite duas odds do mesmo mercado e clique em calcular.</div></div>
+      <p class="note">Para mercados com 3 ou mais resultados, cada resultado precisa estar coberto. Confira regras de empate, prorrogação, abandono, limites e moeda antes de apostar.</p>
+    </section>
+    <aside class="card">
+      <h2>Casas acompanhadas</h2>
+      <p class="muted" style="margin-top:-6px">Selecione as casas nas quais você pretende conferir as cotações.</p>
+      <div class="housegrid" id="houses"></div>
+      <div class="note"><span class="pill">Sem conexão automática</span><br><br>As odds e a disponibilidade precisam ser conferidas diretamente em cada site. Não informe senhas, códigos ou dados de acesso aqui.</div>
+      <hr style="border:0;border-top:1px solid var(--line);margin:20px 0">
+      <h2>Como identificar uma surebet</h2>
+      <p class="muted">Some o inverso de cada odd. Se o total for menor que 1, existe arbitragem matemática antes de taxas e limitações.</p>
+      <div class="result"><div class="muted">Fórmula</div><div style="font-size:18px;font-weight:750;margin:8px 0">ROI = (1 ÷ soma dos inversos) − 1</div><div class="muted" style="font-size:12px">A calculadora considera odds decimais e distribui a banca proporcionalmente para igualar o retorno bruto.</div></div>
+    </aside>
+  </div>
+
+  <section class="card" style="margin-top:16px" id="scanner">
+    <h2>Scanner de surebets</h2>
+    <p class="muted">Cole cotações do mesmo evento e mercado. O scanner compara as odds informadas, escolhe a melhor casa para cada resultado e testa se há arbitragem.</p>
+    <div class="row">
+      <div class="field"><label for="scanEvent">Jogo / evento</label><input id="scanEvent" placeholder="Ex.: Time A x Time B"></div>
+      <div class="field"><label for="scanBank">Banca total (R$)</label><input id="scanBank" type="number" min="1" step="0.01" value="100"></div>
+    </div>
+    <div class="field"><label for="scanMarket">Mercado exato</label><input id="scanMarket" placeholder="Ex.: Vencedor, incluindo prorrogação"></div>
+    <div class="field"><label for="quotes">Cotações — uma por linha: Resultado;Casa;Odd</label>
+      <textarea id="quotes" rows="8" style="width:100%;background:#0e172a;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px;font:14px/1.5 ui-monospace,monospace" placeholder="Time A;Blaze;2.15&#10;Time A;Stake;2.20&#10;Time B;Win.Bet;1.95&#10;Time B;1Win;2.05"></textarea>
+    </div>
+    <div class="row" style="align-items:center">
+      <div class="muted" style="font-size:12px">Casas aceitas: Blaze, Win.Bet, 1Win, Shuffle, 21Bet, Stake, MultiBet ou Outra.</div>
+      <div style="text-align:right"><button id="scanBtn">Analisar cotações</button></div>
+    </div>
+    <div class="result" id="scanResult" aria-live="polite"><div class="muted">Insira pelo menos duas opções de resultado para começar a análise.</div></div>
+    <p class="note">Este é um scanner por cotações inseridas manualmente — ainda não consulta odds ao vivo. Use apenas cotações atuais do mesmo evento, mercado e regras de liquidação. Não é garantia de lucro.</p>
+  </section>
+
+  <section class="card" style="margin-top:16px" id="liveScanner">
+    <h2>Scanner automático de odds</h2>
+    <p class="muted">Consulta cotações disponibilizadas pela The Odds API. A cobertura depende do esporte, região e casas presentes no provedor.</p>
+    <div class="row">
+      <div class="field"><label for="apiSport">Esporte / liga (chave API)</label><select id="apiSport"><option value="upcoming">Todos os próximos eventos (upcoming)</option><option value="soccer_epl">Futebol — Premier League</option><option value="soccer_uefa_champs_league">Futebol — Champions League</option><option value="basketball_nba">Basquete — NBA</option><option value="basketball_wnba">Basquete — WNBA</option><option value="tennis_atp_french_open">Tênis — ATP (exemplo; disponibilidade varia)</option><option value="volleyball">Vôlei (se disponível na API)</option></select></div>
+      <div class="field"><label for="apiRegions">Região das casas</label><select id="apiRegions"><option value="eu">Europa (eu)</option><option value="uk">Reino Unido (uk)</option><option value="us">Estados Unidos (us)</option><option value="au">Austrália (au)</option><option value="eu,uk">Europa + Reino Unido</option></select></div>
+    </div>
+    <div class="row">
+      <div class="field"><label for="apiMarkets">Mercados</label><select id="apiMarkets"><option value="h2h">Vencedor (h2h)</option><option value="h2h,spreads,totals">Vencedor + handicap + totais</option><option value="spreads">Handicap (spreads)</option><option value="totals">Mais/menos (totals)</option></select></div>
+      <div class="field"><label for="apiMinRoi">ROI mínimo para listar (%)</label><input id="apiMinRoi" type="number" min="0" step="0.1" value="0.5"></div>
+    </div>
+    <button id="liveScanBtn">Buscar odds e analisar</button>
+    <div class="result" id="liveScanResult" aria-live="polite"><div class="muted">A integração será ativada quando a chave da API for configurada no Netlify.</div></div>
+    <p class="note">A API não garante cobertura das casas Blaze, Win.Bet, 1Win, Shuffle, 21Bet, Stake ou MultiBet. O scanner só identifica arbitragem quando recebe todos os resultados do mesmo evento e mercado. Odds mudam rapidamente; confirme no site da casa.</p>
+  </section>
+  <section class="card" style="margin-top:16px">
+    <h2>Checklist antes de considerar uma oportunidade</h2>
+    <div class="row">
+      <div class="muted">✓ Mesmo evento e mesmo mercado</div><div class="muted">✓ Regras de liquidação idênticas</div>
+      <div class="muted">✓ Odds ainda disponíveis no bilhete</div><div class="muted">✓ Limites de aposta suficientes</div>
+    </div>
+  </section>
+  <p class="note">Ferramenta de cálculo e análise, não recomendação de aposta nem garantia de lucro. Uma odd pode mudar ou ser recusada; considere taxas, câmbio e regras locais.</p>
+</div>
+<script>
+const names=["Blaze","Win.Bet","1Win","Shuffle","21Bet","Stake","MultiBet","Outra"];
+for(const id of ["house1","house2"]){const s=document.getElementById(id);names.forEach(n=>{const o=document.createElement("option");o.textContent=n;o.value=n;s.appendChild(o);});}
+const hg=document.getElementById("houses");names.slice(0,7).forEach(n=>{const e=document.createElement("span");e.className="house";e.textContent=n;hg.appendChild(e);});
+const money=n=>n.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+document.getElementById("calc").addEventListener("click",()=>{
+ const a=Number(document.getElementById("odd1").value),b=Number(document.getElementById("odd2").value),bank=Number(document.getElementById("bank").value);
+ const out=document.getElementById("result");
+ if(!(a>1&&b>1&&bank>0)){out.innerHTML='<div class="bad status">Preencha duas odds maiores que 1,00 e uma banca válida.</div>';return;}
+ const sum=1/a+1/b,roi=1/sum-1,stake1=bank*(1/a)/sum,stake2=bank*(1/b)/sum,ret=bank/sum;
+ const h1=document.getElementById("house1").value,h2=document.getElementById("house2").value;
+ if(h1===h2){out.innerHTML='<div class="bad status">Escolha casas diferentes para comparar.</div>';return;}
+ const event=document.getElementById("event").value.trim();
+ const title=event?event+" · ":"";
+ if(roi>0){
+ out.innerHTML=`<div class="good status">Arbitragem matemática encontrada</div><div class="big">+${(roi*100).toFixed(2).replace(".",",")}%</div><div class="muted">${title}${document.getElementById("sport").value} · ${document.getElementById("market").value}</div><div class="stats"><div class="stat"><small>Retorno bruto estimado</small><b>${money(ret)}</b></div><div class="stat"><small>Lucro estimado</small><b>${money(ret-bank)}</b></div><div class="stat"><small>Soma dos inversos</small><b>${sum.toFixed(4)}</b></div></div><table><thead><tr><th>Resultado</th><th>Casa</th><th>Odd</th><th>Stake sugerida</th></tr></thead><tbody><tr><td>Resultado 1</td><td>${h1}</td><td>${a.toFixed(2)}</td><td>${money(stake1)}</td></tr><tr><td>Resultado 2</td><td>${h2}</td><td>${b.toFixed(2)}</td><td>${money(stake2)}</td></tr></tbody></table><div class="note">Estimativa antes de taxas, arredondamentos, câmbio e limites. Confirme as duas odds no momento da aposta.</div>`;
+ }else{
+ out.innerHTML=`<div class="bad status">Não há arbitragem com essas odds.</div><div class="muted">ROI matemático: ${(roi*100).toFixed(2).replace(".",",")}% · Soma dos inversos: ${sum.toFixed(4)}. A soma precisa ser menor que 1,0000.</div>`;
+ }
+});
+
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+document.getElementById("scanBtn").addEventListener("click",()=>{
+ const out=document.getElementById("scanResult");
+ const bank=Number(document.getElementById("scanBank").value);
+ const event=document.getElementById("scanEvent").value.trim();
+ const market=document.getElementById("scanMarket").value.trim();
+ if(!(bank>0)){out.innerHTML='<div class="bad status">Informe uma banca válida.</div>';return;}
+ const best=new Map(), lines=document.getElementById("quotes").value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+ const allowed=new Set(names.map(x=>x.toLowerCase())); let invalid=[];
+ lines.forEach((line,i)=>{
+   const parts=line.split(/[;|,\t]/).map(x=>x.trim());
+   if(parts.length!==3){invalid.push(i+1);return;}
+   const [outcome,house,oddText]=parts, odd=Number(oddText.replace(',','.'));
+   if(!outcome||!allowed.has(house.toLowerCase())||!(odd>1)){invalid.push(i+1);return;}
+   const key=outcome.toLocaleLowerCase('pt-BR');
+   const prev=best.get(key);
+   if(!prev||odd>prev.odd) best.set(key,{outcome,house,odd});
+ });
+ if(invalid.length){out.innerHTML=`<div class="bad status">Revise as linhas ${invalid.join(', ')}.</div><div class="muted">Formato obrigatório: Resultado;Casa;Odd. Use ponto ou vírgula decimal.</div>`;return;}
+ const picks=[...best.values()];
+ if(picks.length<2){out.innerHTML='<div class="bad status">Informe pelo menos dois resultados diferentes, com odds válidas.</div>';return;}
+ const sum=picks.reduce((a,x)=>a+1/x.odd,0), roi=1/sum-1, ret=bank/sum;
+ const rows=picks.map(x=>{const stake=bank*(1/x.odd)/sum;return `<tr><td>${esc(x.outcome)}</td><td>${esc(x.house)}</td><td>${x.odd.toFixed(2)}</td><td>${money(stake)}</td></tr>`;}).join('');
+ const header=event?esc(event)+' · ':'';
+ const title=market?esc(market):'Mercado informado';
+ if(roi>0){
+   out.innerHTML=`<div class="good status">Possível arbitragem matemática nas cotações inseridas</div><div class="big">+${(roi*100).toFixed(2).replace('.',',')}%</div><div class="muted">${header}${title}</div><div class="stats"><div class="stat"><small>Retorno bruto estimado</small><b>${money(ret)}</b></div><div class="stat"><small>Lucro estimado</small><b>${money(ret-bank)}</b></div><div class="stat"><small>Soma dos inversos</small><b>${sum.toFixed(4)}</b></div></div><table><thead><tr><th>Resultado</th><th>Melhor casa</th><th>Odd</th><th>Stake sugerida</th></tr></thead><tbody>${rows}</tbody></table><div class="note">Confirme cada odd no bilhete antes de agir. Diferenças de regras, limites, taxas, câmbio, atraso ou alteração de cotação podem eliminar a arbitragem.</div>`;
+ }else{
+   out.innerHTML=`<div class="bad status">Nenhuma arbitragem encontrada nestas cotações</div><div class="muted">ROI matemático: ${(roi*100).toFixed(2).replace('.',',')}% · Soma dos inversos: ${sum.toFixed(4)}. Para haver arbitragem, a soma deve ser menor que 1,0000.</div><table><thead><tr><th>Resultado</th><th>Melhor casa</th><th>Odd</th></tr></thead><tbody>${picks.map(x=>`<tr><td>${esc(x.outcome)}</td><td>${esc(x.house)}</td><td>${x.odd.toFixed(2)}</td></tr>`).join('')}</tbody></table>`;
+ }
+});
+
+// Scanner automático: a chave fica no servidor Netlify, nunca no navegador.
+const liveBtn=document.getElementById('liveScanBtn');
+if(liveBtn){
+ liveBtn.addEventListener('click',async()=>{
+  const out=document.getElementById('liveScanResult');
+  out.innerHTML='<div class="muted">Consultando a API…</div>'; liveBtn.disabled=true;
+  try{
+   const p=new URLSearchParams({sport:document.getElementById('apiSport').value,regions:document.getElementById('apiRegions').value,markets:document.getElementById('apiMarkets').value});
+   const res=await fetch('/.netlify/functions/odds?'+p.toString());
+   const payload=await res.json();
+   if(!res.ok) throw new Error(payload.error||'Falha ao consultar a API.');
+   const events=payload.data||[];
+   if(!events.length){out.innerHTML='<div class="bad status">Nenhum evento/odd disponível nesta combinação.</div><div class="muted">Tente outra liga, região ou mercado. Isso não significa que não existam jogos.</div>';return;}
+   const opportunities=[];
+   for(const ev of events){
+    const marketsByKey=new Map();
+    for(const book of (ev.bookmakers||[])){
+     for(const market of (book.markets||[])){
+      const mk=market.key; if(!marketsByKey.has(mk)) marketsByKey.set(mk,new Map());
+      const best=marketsByKey.get(mk);
+      for(const outcome of (market.outcomes||[])){
+       const label=(outcome.name||'')+(outcome.point!==undefined?' '+outcome.point:'');
+       const k=label.toLowerCase(); const old=best.get(k);
+       if(!old||Number(outcome.price)>old.odd) best.set(k,{label,odd:Number(outcome.price),book:book.title||book.key,updated:market.last_update});
+      }
+     }
+    }
+    for(const [mk,bestMap] of marketsByKey){
+     const picks=[...bestMap.values()]; if(picks.length<2) continue;
+     const inv=picks.reduce((s,x)=>s+1/x.odd,0); const roi=(1/inv-1)*100;
+     if(roi>=Number(document.getElementById('apiMinRoi').value||0)) opportunities.push({ev,mk,picks,roi,inv});
+    }
+   }
+   if(!opportunities.length){out.innerHTML=`<div class="status">Nenhuma arbitragem acima do limite escolhido.</div><div class="muted">${events.length} eventos consultados. As odds recebidas não formaram arbitragem matemática nos mercados disponíveis.</div>`;return;}
+   opportunities.sort((a,b)=>b.roi-a.roi);
+   out.innerHTML=`<div class="good status">${opportunities.length} possível(is) oportunidade(s)</div><div class="note">Ordenadas pelo ROI teórico. Não são apostas garantidas; confirme todos os preços e regras.</div>`+opportunities.slice(0,30).map(o=>{
+    const name=esc((o.ev.home_team||'')+' x '+(o.ev.away_team||''));
+    const when=o.ev.commence_time?new Date(o.ev.commence_time).toLocaleString('pt-BR'):'Horário indisponível';
+    const rows=o.picks.map(x=>`<tr><td>${esc(x.label)}</td><td>${esc(x.book)}</td><td>${x.odd.toFixed(2)}</td></tr>`).join('');
+    return `<div class="result"><div class="good status">ROI teórico: +${o.roi.toFixed(2).replace('.',',')}%</div><b>${name}</b><div class="muted">${esc(o.mk)} · ${esc(when)}</div><table><thead><tr><th>Resultado</th><th>Melhor casa</th><th>Odd</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+   }).join('');
+   const rem=res.headers.get('x-requests-remaining'); if(rem) out.innerHTML+=`<p class="note">Créditos restantes informados pela API: ${esc(rem)}</p>`;
+  }catch(err){out.innerHTML=`<div class="bad status">${esc(err.message)}</div><div class="muted">Confira se a função Netlify foi publicada e se THE_ODDS_API_KEY está configurada nas variáveis de ambiente.</div>`;}
+  finally{liveBtn.disabled=false;}
+ });
+}
+
+
+// Segredos IA — conversa enviada à função segura do Netlify.
+(() => {
+  const launcher = document.getElementById('segredosChatLauncher');
+  const panel = document.getElementById('segredosChatPanel');
+  const close = document.getElementById('segredosChatClose');
+  const messages = document.getElementById('segredosChatMessages');
+  const form = document.getElementById('segredosChatForm');
+  const input = document.getElementById('segredosChatInput');
+  const send = document.getElementById('segredosChatSend');
+  if (!launcher || !panel) return;
+  const history = [];
+  const addMessage = (text, who) => {
+    const el = document.createElement('div');
+    el.className = 'sg-msg ' + who;
+    el.textContent = text;
+    messages.appendChild(el);
+    messages.scrollTop = messages.scrollHeight;
+    return el;
+  };
+  const open = () => { panel.classList.add('open'); input.focus(); };
+  launcher.addEventListener('click', open);
+  close.addEventListener('click', () => panel.classList.remove('open'));
+  document.querySelectorAll('#segredosChatQuick [data-prompt]').forEach(btn => {
+    btn.addEventListener('click', () => { input.value = btn.dataset.prompt; form.requestSubmit(); });
+  });
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const message = input.value.trim();
+    if (!message || send.disabled) return;
+    addMessage(message, 'user');
+    history.push({role:'user', content:message});
+    input.value = '';
+    send.disabled = true;
+    send.textContent = '...';
+    const pending = addMessage('Pensando…', 'bot');
+    try {
+      const response = await fetch('/.netlify/functions/chat', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({messages:history.slice(-12)})
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || 'Não consegui responder agora.');
+      const answer = String(data.reply || 'Não recebi uma resposta. Tente novamente.');
+      pending.textContent = answer;
+      history.push({role:'assistant', content:answer});
+      if (history.length > 16) history.splice(0, history.length - 16);
+    } catch (err) {
+      pending.textContent = err.message || 'Erro de conexão. Tente novamente.';
+    } finally {
+      send.disabled = false;
+      send.textContent = 'Enviar';
+      input.focus();
+      messages.scrollTop = messages.scrollHeight;
+    }
+  });
+})();
+
+</script>
+
+<button id="segredosChatLauncher" type="button" aria-label="Abrir Segredos IA">✦ Conversar com a IA</button>
+<section id="segredosChatPanel" aria-label="Chat Segredos IA" aria-live="polite">
+  <header id="segredosChatHeader">
+    <div><strong>✦ Segredos IA</strong><small>Assistente de dúvidas sobre odds e arbitragem</small></div>
+    <button id="segredosChatClose" type="button" aria-label="Fechar chat">×</button>
+  </header>
+  <div id="segredosChatMessages">
+    <div class="sg-msg bot">Olá! Sou o Segredos IA. Posso explicar odds, cálculo de surebet, handicaps e como conferir uma oportunidade. O que você quer saber?</div>
+  </div>
+  <div id="segredosChatQuick">
+    <button type="button" data-prompt="O que é uma surebet?">O que é surebet?</button>
+    <button type="button" data-prompt="Como calculo o ROI de uma arbitragem?">Calcular ROI</button>
+    <button type="button" data-prompt="Quais cuidados devo ter antes de apostar?">Cuidados</button>
+  </div>
+  <form id="segredosChatForm">
+    <input id="segredosChatInput" maxlength="1200" autocomplete="off" placeholder="Digite sua pergunta..." aria-label="Sua mensagem">
+    <button id="segredosChatSend" type="submit">Enviar</button>
+  </form>
+  <div id="segredosChatFoot">Respostas informativas. Não garante lucro nem substitui a conferência das odds.</div>
+</section>
+
+</body></html>
